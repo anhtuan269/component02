@@ -1,17 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Item
+      v-for="(item, index) in items"
+      :key="index"
+      :item="item"
+      :vertical="item.vertical"
+    >
+    </Item>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Item from "@/components/Item";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Item,
+  },
+  data() {
+    return {
+      items: [],
+    };
+  },
+  mounted() {
+    fetch("http://localhost:3000/items")
+      .then((res) => res.json())
+      .then((data) => (this.items = data))
+      .catch((err) => console.log(err));
+  },
+  computed: {},
+};
 </script>
 
 <style>
@@ -24,3 +43,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
