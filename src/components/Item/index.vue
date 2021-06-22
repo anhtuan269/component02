@@ -45,9 +45,10 @@ export default {
     },
 
     image_position: {
+      
       validation(value) {
         return ["top", "left", "right", "bottom"].indexOf(value) !== -1;
-      },
+      }
     },
   },
   computed: {
@@ -106,7 +107,7 @@ export default {
           auth: "",
          }
       };
-      return allsetting[this.image_position];
+      return allsetting[this.image_position] || allsetting.top;
     },
   },
 };
