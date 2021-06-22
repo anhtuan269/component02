@@ -1,64 +1,40 @@
-<template>
-  <div
-    class="relative bg-white p-2 items-center mb-3 border rounded-xl shadow-md lg:mb-7 mx-auto"
-    :class="items"
-  >
-    <div class="image relative rounded-xl object-cover" :class="imageWidth">
-      <img
-        class=" rounded-lg mr-2 w-full lg:rounded-xl lg:object-cover"
-        :class="height"
-        src="@/assets/image/police-scale.webp"
-        alt=""
-      />
-    </div>
+<template lang="pug" >
+.relative.bg-white.p-2.items-center.mb-3.border.rounded-xl.shadow-md.mx-auto(class="lg:mb-7",:class="classSeting.items" )
 
-    <div class="content p-5 text-left" :class="contentWidth">
-      <div class="new-link text-left">
-        <a class="bg-violet" href="#">{{ item.new }} </a>
-      </div>
+  .image.relative.rounded-xl.object-cover(:class="classSeting.imageWidth")
 
-      <div class="title mb-5">
-        <a class="text-black text-lg font-bold lg:text-xl" href="#">
-          {{ item.title }}
-        </a>
-      </div>
+    img.rounded-lg.mr-2.w-full( class="lg:rounded-xl lg:object-cover", :class="classSeting.height", src="@/assets/image/police-scale.webp", alt="" )
 
-      <p class="lg:mb-8 text-sm" :class="description">{{ item.description }}</p>
+  .content.p-5.text-left(:class="classSeting.contentWidth")
 
-      <div class="" :class="authContent">
-        <div class="avatar flex items-center justify-center mr-5"
-        :class="avatarBackgound"
-        >
-          <img
-            class=" rounded-full w-10"
-            :class="avatar"
-            src="@/assets/image/jane-smith.webp"
-            alt=""
-          />
-        </div>
+    .new-link.text-left
+      a.bg-violet(href="#") {{ item.new }}
 
-        <div class="info lg:inline-block" :class="auth"> 
-          <h3 class=" name text-gray-500 font-weight text-xs font-bold lg:text-sm lg:mb-2 lg:text-left ">
-            {{ item.name }}
-          </h3>
+    .title.mb-5
+      a.text-black.text-lg.font-bold(class="lg:text-xl", href="#")
+        | {{ item.title }}
 
-          <div class="time text-xs text-gray-400 lg:text-sm flex">
-            <span>
-              {{ item.day }}
-              <sup class="text-gray-600 text-sm"
-              :class="sup"
-              >.</sup>
-            </span>
+    p.text-sm(class="lg:mb-8", :class="classSeting.description") {{ item.description }}
 
-            <span class="ml-4" :class="clock">
-              <img class="w-5 mr-2" src="@/assets/image/clock1.svg" alt="" />
-              <span> {{ item.time }}</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    div(:class="classSeting.authContent")
+
+      .avatar.flex.items-center.justify-center.mr-5( :class="classSeting.avatarBackgound" )
+
+        img.rounded-full.w-10( :class="classSeting.avatar", src="@/assets/image/jane-smith.webp", alt="" )
+
+    .info(class="lg:inline-block", :class="classSeting.auth")
+
+      h3.name.text-gray-500.font-weight.text-xs.font-bold( class="lg:text-sm lg:mb-2 lg:text-left" )
+        | {{ item.name }}
+
+      .time.text-xs.text-gray-400.flex(class="lg:text-sm")
+
+        span
+          | {{ item.day }}
+          sup.text-gray-600.text-sm(:class="classSeting.sup") .
+        span.ml-4(:class="classSeting.clock")
+          img.w-5.mr-2(src="@/assets/image/clock1.svg", alt="")
+          span {{ item.time }}
 </template>
 
 <script>
@@ -67,88 +43,70 @@ export default {
     item: {
       type: Object,
     },
-    vertical: {
-      type: Boolean,
+
+    image_position: {
+      validation(value) {
+        return ["top", "left", "right", "bottom"].indexOf(value) !== 1;
+      },
     },
   },
   computed: {
-
-    items() {
-      if (this.vertical === true) {
-        return " flex  xl:max-w-5xl";
-      } else {
-        return "lg:max-w-md";
-      }
-    },
-    imageWidth() {
-      if (this.vertical === true) {
-        return " w-5/12 ";
-      } else {
-        return "w-full";
-      }
-    },
-    height() {
-        if (this.vertical === true) {
-        return " lg:h-72 ";
-      } else {
-        return "";
-      }
-    },
-     avatarBackgound() {
-      if (this.vertical === true) {
-        return " hidden lg:flex ";
-      } else {
-        return "inline-block";
-      }
-    },
-     sup() {
-      if (this.vertical === true) {
-        return " hidden lg:inline-block lg:ml-3 ";
-      } else {
-        return "ml-3";
-      }
-    },
-    authContent() {
-      if (this.vertical === true) {
-        return "  lg:flex lg:items-center ";
-      } else {
-        return "flex items-center";
-      }
-    },
-    clock() {
-      if (this.vertical === true) {
-        return " hidden lg:flex  ";
-      } else {
-        return "flex ";
-      }
-    },
-    contentWidth() {
-      if (this.vertical === true) {
-        return " w-7/12";
-      } else {
-        return "w-full";
-      }
-    },
-    avatar() {
-      if (this.vertical === true) {
-        return " hidden lg:flex lg:items-center  lg:justify-center ";
-      } else {
-        return " flex justify-center items-center  ";
-      }
-    },
-    description() {
-      if (this.vertical === true) {
-        return " hidden lg:block";
-      } else {
-        return " mb-5";
-      }
-    },
-    auth() {
-      if (this.vertical === true) {
-        return "flex justify-between items-center lg:inline-block ";
-      } else {
-        return "";
-      }
+    classSeting() {
+      var allsetting = {
+        left: {
+          items: "flex  xl:max-w-5xl",
+          imageWidth: "w-5/12",
+          height: " lg:h-72 ",
+          avatarBackgound: " hidden lg:flex ",
+          sup: "hidden lg:inline-block lg:ml-3",
+          authContent: "  lg:flex lg:items-center ",
+          clock: " hidden lg:flex  ",
+          contentWidth: " w-7/12",
+          avatar: " hidden lg:flex lg:items-center  lg:justify-center ",
+          description: " hidden lg:block",
+          auth: "flex justify-between items-center lg:inline-block ",
+        },
+        top: {
+          items: "lg:max-w-md",
+          imageWidth: "w-full",
+          height: "",
+          avatarBackgound: "inline-block",
+          sup: "ml-3",
+          authContent: "flex items-center",
+          clock: "flex ",
+          contentWidth: "w-full",
+          avatar: " flex justify-center items-center  ",
+          description: " mb-5",
+          auth: "",
+        },
+         right: {
+          items: "flex flex-row-reverse  xl:max-w-5xl",
+          imageWidth: "w-5/12",
+          height: " lg:h-72 ",
+          avatarBackgound: " hidden lg:flex ",
+          sup: "hidden lg:inline-block lg:ml-3",
+          authContent: "  lg:flex lg:items-center ",
+          clock: " hidden lg:flex  ",
+          contentWidth: " w-7/12",
+          avatar: " hidden lg:flex lg:items-center  lg:justify-center ",
+          description: " hidden lg:block",
+          auth: "flex justify-between items-center lg:inline-block ",
+        },
+         bottom: {
+          items: " flex flex-col-reverse lg:max-w-md",
+          imageWidth: "w-full",
+          height: "",
+          avatarBackgound: "inline-block",
+          sup: "ml-3",
+          authContent: "flex items-center",
+          clock: "flex ",
+          contentWidth: "w-full",
+          avatar: " flex justify-center items-center  ",
+          description: " mb-5",
+          auth: "",
+         }
+      };
+      return allsetting[this.image_position];
     },
   },
 };

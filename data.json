@@ -11,10 +11,10 @@
       "day":"May 25, 2021 ",
       "sup":".",
       "time":"2 min",
-      "vertical":true
+      "vertical":"left"
     },
     {
-      "id":1,
+      "id":2,
       "url":"/image/police-scale.webp",
       "title": " Police Arrested More Than 11000 People At Protests Across The US",
       "description":"Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
@@ -24,7 +24,35 @@
       "day":"May 25, 2021 ",
       "sup":".",
       "time":"2 min",
-      "vertical":false
+      "vertical":"top"
+    }
+    ,
+    {
+      "id":3,
+      "url":"/image/police-scale.webp",
+      "title": " Police Arrested More Than 11000 People At Protests Across The US",
+      "description":"Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
+      "new":"new",
+      "avatar":"./src/assets/image/image-1.webp",
+      "name":"Jane Smith",
+      "day":"May 25, 2021 ",
+      "sup":".",
+      "time":"2 min",
+      "vertical":"right"
+    },
+
+    {
+      "id":4,
+      "url":"/image/police-scale.webp",
+      "title": " Police Arrested More Than 11000 People At Protests Across The US",
+      "description":"Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to…",
+      "new":"new",
+      "avatar":"./src/assets/image/image-1.webp",
+      "name":"Jane Smith",
+      "day":"May 25, 2021 ",
+      "sup":".",
+      "time":"2 min",
+      "vertical":"bottom"
     }
   ]
 }

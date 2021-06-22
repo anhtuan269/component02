@@ -1,13 +1,20 @@
-<template>
-  <div class="container">
-    <Item
-      v-for="(item, index) in items"
-      :key="index"
-      :item="item"
-      :vertical="item.vertical"
-    >
-    </Item>
-  </div>
+<template lang="pug">
+.container
+  Item(
+    v-for="(item, index) in items",
+    :key="index",
+    :item="item",
+    :image_position="item.vertical"
+  )
+  //- <div class="container">
+  //-   <Item
+  //-     v-for="(item, index) in items"
+  //-     :key="index"
+  //-     :item="item"
+  //-     :vertical="item.vertical"
+  //-   >
+  //-   </Item>
+  //- </div>
 </template>
 
 <script>
