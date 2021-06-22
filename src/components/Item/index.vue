@@ -46,7 +46,7 @@ export default {
 
     image_position: {
       validation(value) {
-        return ["top", "left", "right", "bottom"].indexOf(value) !== 1;
+        return ["top", "left", "right", "bottom"].indexOf(value) !== -1;
       },
     },
   },
